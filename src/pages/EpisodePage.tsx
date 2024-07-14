@@ -8,6 +8,7 @@ export const EpisodePage = () => {
   const { id } = useParams()
   const { data, error, isLoading } = useFetch<IEpisode[]>(`http://localhost:3001/episodes?id=${id}`)
 
+  console.log('epis', data)
   const elems = data?.map((episode) => <EpisodeTemplate key={episode.id} data={episode} />)
 
   return <ul>{elems}</ul>

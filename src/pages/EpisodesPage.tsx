@@ -10,6 +10,8 @@ export const EpisodesPage = () => {
   const [page, setPage] = useState(1)
   const { data, isLoading, error } = useFetch<ServerData>(`${BASE_URL}/episode?page=${page}`)
 
+  console.log('ep', data)
+
   const hasMore = data?.info.next !== null
 
   const observer = useRef<IntersectionObserver | null>()
