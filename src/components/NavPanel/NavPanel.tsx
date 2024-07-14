@@ -1,25 +1,38 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 import * as styles from './navPanel.module.scss'
-import { Link } from 'react-router-dom'
 
 export const NavPanel = () => {
+  const auth = useAuth()
+
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.greeting}>Hello,User!</div>
+    <>
       <div className={styles.logo}>
         <Link to="/">Rick & Morty</Link>
       </div>
-      <ul className={styles.panel}>
-        <li>
-          <NavLink to="/characters">Characters</NavLink>
-        </li>
-        <li>
-          <NavLink to="/episodes">Episodes</NavLink>
-        </li>
-        <li>
-          <NavLink to="/locations">Locations</NavLink>
-        </li>
-      </ul>
-    </nav>
+      <nav className={styles.navbar}>
+        <div className={styles.greeting}>
+          {auth.user === null ? 'You are not logged in' : `Hello,${auth.user}`}
+        </div>
+
+        <ul className={styles.panel}>
+          <li>
+            <NavLink to="/characters">Characters</NavLink>
+          </li>
+          <li>
+            <NavLink to="/episodes">Episodes</NavLink>
+          </li>
+          <li>
+            <NavLink to="/locations">Locations</NavLink>
+          </li>
+          <li>
+            <NavLink to="/login">login page</NavLink>
+          </li>
+          <li>
+            <NavLink to="/non-exist">Non-exist</NavLink>
+          </li>
+        </ul>
+      </nav>
+    </>
   )
 }

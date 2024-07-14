@@ -1,3 +1,13 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  font-size: 44px;
+}
+
+.logo:hover {
+  color: #e7e43f;
+}
+
 .navbar {
   display: flex;
   justify-content: space-around;
@@ -9,10 +19,6 @@
 
   .greeting {
     font-size: 32px;
-  }
-
-  .logo {
-    font-size: 40px;
   }
 }
 

@@ -2,15 +2,17 @@ import { useState, useEffect } from 'react'
 
 export function useFetch<T>(url: string, options = {}) {
   const [data, setData] = useState<T>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
 
   useEffect(() => {
     function fetchData(url: string, options = {}) {
+      setIsLoading(true)
+
       return fetch(url, options)
         .then((res) => {
           if (!res.ok) {
-            throw new Error('fetch failed')
+            throw new Error('Failed data fetching')
           }
           return res.json()
         })
@@ -20,7 +22,7 @@ export function useFetch<T>(url: string, options = {}) {
     }
 
     fetchData(url, options)
-  }, [])
+  }, [url])
 
   return { data, isLoading, error }
 }

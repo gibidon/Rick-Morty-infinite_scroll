@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
+import { useFetch } from '../hooks/useFetch'
 
-import { ICharacter } from '../CharactersPage/CharactersPage'
-import { CharacterTemplate } from '../../components/CharacterTemplate/CharacterTemplate'
+import { ICharacter } from './CharactersPage'
+import { CharacterTemplate } from '../components'
 
 export const CharacterPage = () => {
   const { characterId } = useParams()

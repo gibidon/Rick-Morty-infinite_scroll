@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ILocation } from '../pages/LocationsPage/LocationsPage'
+import { ILocation } from '../../pages/LocationsPage'
 import * as styles from './locationTemplate.module.scss'
 
 interface ILocationProps {
