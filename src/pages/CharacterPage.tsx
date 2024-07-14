@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
-
-import { ICharacter } from './CharactersPage'
+import { ICharacter } from '../types'
 import { CharacterTemplate } from '../components'
 
 export const CharacterPage = () => {

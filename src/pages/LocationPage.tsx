@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
-import { ILocation } from './LocationsPage'
+import { ILocation } from '../types'
 import { LocationTemplate } from '../components/LocationTemplate/LocationTemplate'
 import * as styles from './locationPage.module.scss'
 

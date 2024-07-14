@@ -1,4 +1,4 @@
-import { ICharacter } from '../../pages/CharactersPage'
+import { ICharacter } from '../../types'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import * as styles from './character.module.scss'

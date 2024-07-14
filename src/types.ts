@@ -1,4 +1,4 @@
-interface ICharacter {
+export interface ICharacter {
   id: number
   name: string
   status: string
@@ -9,7 +9,7 @@ interface ICharacter {
   created: string
 }
 
-interface ILocation {
+export interface ILocation {
   id: string
   name: string
   type: string
@@ -17,7 +17,7 @@ interface ILocation {
   created: string
 }
 
-interface IEpisode {
+export interface IEpisode {
   id: string
   name: string
   air_date: string

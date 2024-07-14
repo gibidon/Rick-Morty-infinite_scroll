@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useFetch } from '../hooks/useFetch'
-import { IEpisode } from './EpisodesPage'
+import { IEpisode } from '../types'
 import * as styles from './episode.module.scss'
 import { EpisodeTemplate } from '../components/EpisodeTemplate/EpisodeTemplate'
 

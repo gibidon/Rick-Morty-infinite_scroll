@@ -1,21 +1,11 @@
 import { useState, useRef, useCallback } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
+import { ICharacter } from '../types'
 import { CharacterTemplate } from '../components'
 import { BASE_URL } from '../constants/constants'
 import { ServerData } from '../types'
 import * as styles from './charactersPage.module.scss'
-
-export interface ICharacter {
-  id: number
-  name: string
-  status: string
-  species: string
-  type: string
-  gender: string
-  image: string
-  created: string
-}
 
 export const CharactersPage = () => {
   const [page, setPage] = useState(1)
@@ -23,8 +13,6 @@ export const CharactersPage = () => {
 
   const navigate = useNavigate()
   const hasMore = data?.info.next !== null
-
-  console.log(data)
 
   const observer = useRef<IntersectionObserver | null>()
 

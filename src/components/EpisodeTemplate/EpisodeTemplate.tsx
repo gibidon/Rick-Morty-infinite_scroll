@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { IEpisode } from '../../pages/EpisodesPage'
+import { IEpisode } from '../../types'
 import * as styles from './episode.module.scss'
 
 interface IEpisodeProps {

@@ -1,17 +1,10 @@
 import { useState, useRef, useCallback } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { EpisodeTemplate } from '../components/EpisodeTemplate/EpisodeTemplate'
+import { IEpisode } from '../types'
 import { ServerData } from '../types'
 import { BASE_URL } from '../constants/constants'
 import * as styles from './episodesPage.module.scss'
-
-export interface IEpisode {
-  id: string
-  name: string
-  air_date: string
-  episode: string
-  created: string
-}
 
 export const EpisodesPage = () => {
   const [page, setPage] = useState(1)
@@ -56,7 +49,7 @@ export const EpisodesPage = () => {
       )
     }
   })
-  
+
   return (
     <div className={styles.layout}>
       {isLoading && <div>Loading..</div>}

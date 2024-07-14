@@ -1,17 +1,10 @@
 import { useState, useRef, useCallback } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { LocationTemplate } from '../components/LocationTemplate/LocationTemplate'
+import { ILocation } from '../types'
 import { BASE_URL } from '../constants/constants'
 import { ServerData } from '../types'
 import * as styles from './locationsPage.module.scss'
-
-export interface ILocation {
-  id: string
-  name: string
-  type: string
-  dimention: string
-  created: string
-}
 
 export const LocationsPage = () => {
   const [page, setPage] = useState(1)
@@ -40,10 +33,6 @@ export const LocationsPage = () => {
     },
     [isLoading, hasMore],
   )
-
-  // const locationElems = data?.map((location) => (
-  //   <LocationTemplate key={location.id} locationData={location} />
-  // ))
 
   const locationElems = data?.results?.map((location: ILocation, index) => {
     if (data.results.length - 1 === index + 1) {
