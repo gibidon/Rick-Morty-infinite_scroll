@@ -1,4 +1,4 @@
-export enum PageNames {
+export enum PAGE_NAMES {
   Home = 'Home',
   Login = 'Login',
   CharacterPage = 'CharacterPage',

@@ -1,5 +1,6 @@
 import { useAuth } from '../../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
+import * as styles from './authStatus.module.scss'
 
 export const AuthStatus = () => {
   const auth = useAuth()
@@ -10,14 +11,16 @@ export const AuthStatus = () => {
   }
 
   if (auth.user === null) {
-    return <p>You are not logged in..</p>
+    return ''
   }
 
   return (
     <>
-      <p>Your login: {auth.user}</p>
+      <p className={styles.login}>Your login: {auth.user}</p>
       <p>
-        <button onClick={handleSignout}>Log out</button>
+        <button className={styles.logoutBtn} onClick={handleSignout}>
+          Log out
+        </button>
       </p>
     </>
   )
