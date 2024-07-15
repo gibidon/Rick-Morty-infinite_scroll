@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { ICharacter } from '../types'
 import { CharacterTemplate } from '../components'
 import { BASE_URL } from '../constants/constants'
-import { ServerData } from '../types'
+import { ServerResponse } from '../types'
 import * as styles from './charactersPage.module.scss'
 
 export const CharactersPage = () => {
   const [page, setPage] = useState(1)
-  const { data, error, isLoading } = useFetch<ServerData>(`${BASE_URL}/character?page=${page}`)
+  const { data, error, isLoading } = useFetch<ServerResponse>(`${BASE_URL}/character?page=${page}`)
 
   const navigate = useNavigate()
   const hasMore = data?.info.next !== null

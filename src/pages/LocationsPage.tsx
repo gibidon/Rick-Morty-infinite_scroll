@@ -3,12 +3,12 @@ import { useFetch } from '../hooks/useFetch'
 import { LocationTemplate } from '../components/LocationTemplate/LocationTemplate'
 import { ILocation } from '../types'
 import { BASE_URL } from '../constants/constants'
-import { ServerData } from '../types'
+import { ServerResponse } from '../types'
 import * as styles from './locationsPage.module.scss'
 
 export const LocationsPage = () => {
   const [page, setPage] = useState(1)
-  const { data, error, isLoading } = useFetch<ServerData>(`${BASE_URL}/location?page=${page}`)
+  const { data, error, isLoading } = useFetch<ServerResponse>(`${BASE_URL}/location?page=${page}`)
 
   const hasMore = data?.info.next !== null
 

@@ -8,4 +8,6 @@ export enum PAGE_NAMES {
   EpisodePage = 'EpisodePage',
   EpisodesPage = 'EpisodesPage',
   NotFound = 'NotFound',
+  CategoryPage = 'CategoryPage',
+  DetailedPage = 'DetailedPage',
 }

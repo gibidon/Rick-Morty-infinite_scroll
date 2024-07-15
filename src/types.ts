@@ -34,9 +34,16 @@ interface ServerSearchInfo {
   prev?: any
 }
 
-type ServerSearchResult = Array<AllCategoryType>
+// type ServerSearchResult = Array<AllCategoryType>
 
-export interface ServerData {
+export interface ServerResponse {
   info: ServerSearchInfo
-  results: ServerSearchResult
+  results: Array<AllCategoryType>
 }
+
+// export interface ServerData<T extends AllCategoryType> {
+//   info: ServerSearchInfo
+//   results: Array<T>
+// }
+
+export type TCategoryName = 'location' | 'episode' | 'character'

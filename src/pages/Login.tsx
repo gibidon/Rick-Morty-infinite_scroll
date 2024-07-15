@@ -34,6 +34,7 @@ export const Login = () => {
         onChange={handleLoginInput}
       />
       <button
+        className={styles.loginBtn}
         onClick={() =>
           auth.signin(login, () => {
             navigate(from, { replace: true })

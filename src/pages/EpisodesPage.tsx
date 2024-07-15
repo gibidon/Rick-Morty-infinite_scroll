@@ -2,15 +2,13 @@ import { useState, useRef, useCallback } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { EpisodeTemplate } from '../components/EpisodeTemplate/EpisodeTemplate'
 import { IEpisode } from '../types'
-import { ServerData } from '../types'
+import { ServerResponse } from '../types'
 import { BASE_URL } from '../constants/constants'
 import * as styles from './episodesPage.module.scss'
 
 export const EpisodesPage = () => {
   const [page, setPage] = useState(1)
-  const { data, isLoading, error } = useFetch<ServerData>(`${BASE_URL}/episode?page=${page}`)
-
-  console.log('ep', data)
+  const { data, isLoading, error } = useFetch<ServerResponse>(`${BASE_URL}/episode?page=${page}`)
 
   const hasMore = data?.info.next !== null
 
