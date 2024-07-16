@@ -26,7 +26,7 @@ export function App() {
               </PrivatePage>
             }
           >
-            <Route index element={<></>} />
+            {/* <Route index element={<></>} /> */}
             <Route path=":category" element={<LazyPage name={PAGE_NAMES.CategoryPage} />} />
             <Route path=":category/:id" element={<LazyPage name={PAGE_NAMES.DetailedPage} />} />
           </Route>
