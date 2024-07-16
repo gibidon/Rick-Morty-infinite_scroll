@@ -13,26 +13,26 @@ export function App() {
       <NavPanel />
       <AuthStatus />
 
-      <ErrorBoundary>
-        <Routes>
-          <Route path="/" index element={<LazyPage name={PAGE_NAMES.Home} />} />
-          <Route path="/login" element={<LazyPage name={PAGE_NAMES.Login} />} />
+      {/* <ErrorBoundary> */}
+      <Routes>
+        <Route path="/" index element={<LazyPage name={PAGE_NAMES.Home} />} />
+        <Route path="/login" element={<LazyPage name={PAGE_NAMES.Login} />} />
 
-          <Route
-            path="/category"
-            element={
-              <PrivatePage>
-                <CategoryLayout />
-              </PrivatePage>
-            }
-          >
-            <Route index element={<></>} />
-            <Route path=":category" element={<LazyPage name={PAGE_NAMES.CategoryPage} />} />
-            <Route path=":category/:id" element={<LazyPage name={PAGE_NAMES.DetailedPage} />} />
-          </Route>
-          <Route path="*" element={<LazyPage name={PAGE_NAMES.NotFound} />} />
-        </Routes>
-      </ErrorBoundary>
+        <Route
+          path="/category"
+          element={
+            <PrivatePage>
+              <CategoryLayout />
+            </PrivatePage>
+          }
+        >
+          {/* <Route index element={<></>} /> */}
+          <Route path=":category" element={<LazyPage name={PAGE_NAMES.CategoryPage} />} />
+          <Route path=":category/:id" element={<LazyPage name={PAGE_NAMES.DetailedPage} />} />
+        </Route>
+        <Route path="*" element={<LazyPage name={PAGE_NAMES.NotFound} />} />
+      </Routes>
+      {/* </ErrorBoundary> */}
 
       <Footer />
     </AuthProvider>

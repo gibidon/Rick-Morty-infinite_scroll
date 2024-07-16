@@ -1,20 +1,14 @@
 import { useState, useRef, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
-import { useFetch } from '../hooks/useFetch'
-import { BASE_URL } from '../constants/constants'
-import { ServerResponse, TCategoryName, AllCategoryType } from '../types'
+import { TCategoryName, AllCategoryType } from '../types'
 import { ItemTemplate } from './ItemTemplate'
+import { useLoadCategory } from '../hooks/useLoadCategory'
 import * as styles from './category.module.scss'
 
 export const CategoryPage = () => {
   const { category } = useParams<{ category: TCategoryName }>()
   const [page, setPage] = useState(1)
-  const { data, isLoading, error } = useFetch<ServerResponse>(
-    `${BASE_URL}/${category}?page=${page}`,
-  )
-
-  console.log('data: ', data)
-  const hasMore = data?.info.next !== null
+  const { items, isLoading, error, hasMore } = useLoadCategory(category, page)
 
   const observer = useRef<IntersectionObserver | null>()
 
@@ -38,18 +32,18 @@ export const CategoryPage = () => {
     [isLoading, hasMore],
   )
 
-  const elems = data?.results?.map((item: AllCategoryType, index) => {
-    if (data.results.length - 1 === index + 1) {
+  const elems = items?.map((item: AllCategoryType, index) => {
+    if (items.length - 1 === index + 1) {
       return (
-        <span ref={lastNodeRef} key={index}>
+        <div ref={lastNodeRef} key={index}>
           <ItemTemplate key={item.id} item={item} category={category} />
-        </span>
+        </div>
       )
     } else {
       return (
-        <span key={index}>
+        <div key={index}>
           <ItemTemplate item={item} category={category} />
-        </span>
+        </div>
       )
     }
   })
@@ -63,6 +57,7 @@ export const CategoryPage = () => {
           <button onClick={() => setPage(page + 1)}>Next page</button>
         </div>
       )}
+      {error && <span>Error: {error}</span>}
     </div>
   )
 }
