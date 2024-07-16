@@ -10,6 +10,7 @@ export const CategoryPage = () => {
   const [page, setPage] = useState(1)
   const { items, isLoading, error, hasMore } = useLoadCategory(category, page)
 
+  console.log('category on category psge:', category)
   const observer = useRef<IntersectionObserver | null>()
 
   const lastNodeRef = useCallback(

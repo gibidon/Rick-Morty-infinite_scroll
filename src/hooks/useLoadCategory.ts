@@ -8,6 +8,11 @@ export function useLoadCategory(category: TCategoryName, page: number) {
   const [isLoading, setIsLoading] = useState(false)
   const [hasMore, setHasMore] = useState(false)
 
+  //if category changes,we need to clean items. Otherwise items will accumulate different category elements
+  useEffect(() => {
+    setItems([])
+  }, [category])
+
   useEffect(() => {
     setIsLoading(true)
 
