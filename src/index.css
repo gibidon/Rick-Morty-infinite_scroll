@@ -8,17 +8,17 @@
   padding: 0;
 }
 
-/* html, */
 body {
-  height: 100vh;
+  /* height: 100vh; */
   background: rgb(128, 62, 91);
   background: radial-gradient(circle, rgba(128, 62, 91, 1) 0%, rgba(23, 31, 60, 1) 100%);
   z-index: 0;
-  font-family: 'WubbaLubbaDubDub';
+  /* font-family: 'WubbaLubbaDubDub'; */
   color: white;
 }
 
 a {
+  font-family: inherit;
   text-decoration: none;
   color: inherit;
 }

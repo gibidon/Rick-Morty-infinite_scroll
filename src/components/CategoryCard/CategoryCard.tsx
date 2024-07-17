@@ -7,10 +7,10 @@ interface ICategoryProps {
 }
 
 export const CategoryCard = ({ categoryName, imageUrl }: ICategoryProps) => {
-  console.log(imageUrl)
+  console.log(categoryName, imageUrl)
 
   return (
-    <Link to={`/${categoryName}`}>
+    <Link to={`/category/${categoryName}`}>
       <div className={styles.card}>
         <img src={imageUrl} alt={imageUrl} />
         <div className={styles.title}>{categoryName}</div>

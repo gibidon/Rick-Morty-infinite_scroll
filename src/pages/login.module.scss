@@ -1,0 +1,18 @@
+.login_input {
+  padding: 8px 4px;
+  border: 1px solid black;
+}
+
+.loginBtn {
+  padding: 10px 5px;
+  font-size: 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.loginBtn:hover {
+  border: 1px solid orange;
+  background-color: lightgrey;
+}

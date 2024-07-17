@@ -1,34 +1,46 @@
 import { Routes, Route } from 'react-router-dom'
-import { NavPanel } from './components/NavPanel/NavPanel'
-import { NotFound } from './pages/NotFound'
-import { CharactersPage } from './pages/CharactersPage/CharactersPage'
-import { EpisodesPage } from './pages/EpisodesPage/EpisodesPage'
-import { LocationsPage } from './pages/LocationsPage/LocationsPage'
-import { CharacterPage } from './pages/CharacterPage/CharacterPage'
-import { ContentLayout } from './components/ContentLayout'
-import { Footer } from './components/Footer/Footer'
-import { HomePage } from './pages/Home/Home'
-import { EpisodePage } from './pages/EpisodePage/EpisodePage'
-import { LocationPage } from './pages/LocationPage/LocationPage'
+import { AuthProvider } from './contexts/AuthProvider'
+import { NavPanel, Footer, AuthStatus } from './components'
+import { PrivatePage } from './pages/PrivatePage'
+import { ErrorBoundary } from './components/NavPanel/ErrorBoundary/ErrorBoundary'
+import { PAGE_NAMES } from './pages/PageNames'
+import { LazyPage } from './pages/LazyPage'
+import { CategoryLayout } from './layouts/CategoryLayout'
+import { INTERNAL_PATHS } from './internalPaths'
 
 export function App() {
   return (
-    <>
+    <AuthProvider>
       <NavPanel />
-      <Routes>
-        <Route element={<ContentLayout />}>
-          <Route path="/" index element={<HomePage />} />
-          <Route path="/characters" element={<CharactersPage />} />
-          <Route path="/characters/:characterId" element={<CharacterPage />} />
-          <Route path="/episodes" element={<EpisodesPage />} />
-          <Route path="/episodes/:id" element={<EpisodePage />} />
-          <Route path="/locations" element={<LocationsPage />} />
-          <Route path="/locations/:id" element={<LocationPage />} />
-        </Route>
+      <AuthStatus />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route path={INTERNAL_PATHS.home} index element={<LazyPage name={PAGE_NAMES.Home} />} />
+          <Route path={INTERNAL_PATHS.login} element={<LazyPage name={PAGE_NAMES.Login} />} />
+
+          <Route
+            path={INTERNAL_PATHS.category}
+            element={
+              <PrivatePage>
+                <CategoryLayout />
+              </PrivatePage>
+            }
+          >
+            <Route
+              path={INTERNAL_PATHS.specificCategory}
+              element={<LazyPage name={PAGE_NAMES.CategoryPage} />}
+            />
+            <Route
+              path={INTERNAL_PATHS.specificCategoryElement}
+              element={<LazyPage name={PAGE_NAMES.DetailedPage} />}
+            />
+          </Route>
+          <Route path={INTERNAL_PATHS.notFound} element={<LazyPage name={PAGE_NAMES.NotFound} />} />
+        </Routes>
+      </ErrorBoundary>
+
       <Footer />
-    </>
+    </AuthProvider>
   )
 }

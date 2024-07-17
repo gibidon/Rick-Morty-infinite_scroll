@@ -1,4 +1,4 @@
-import { ICharacter } from '../../pages/CharactersPage/CharactersPage'
+import { ICharacter } from '../../types'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import * as styles from './character.module.scss'
@@ -24,11 +24,6 @@ export const CharacterTemplate = ({ character }: CharacterProps) => {
           <img src={image} alt={'character image'} />
         </li>
       </ul>
-      <div>
-        <button onClick={() => navigate(-1)} className={styles.goBackBtn}>
-          Go back
-        </button>
-      </div>
     </Link>
   )
 }
