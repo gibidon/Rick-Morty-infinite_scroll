@@ -1,12 +1,8 @@
-export const internalPaths = {
+export const INTERNAL_PATHS = {
   home: '/',
-  about: '/about',
-  articles: '/articles',
-  article: (alias: string): string => `/articles/${alias}`,
-}
-
-export enum intPaths {
-  home = '/',
-  characters = '/characters',
-  character = '/character/:id',
+  login: '/login',
+  category: '/category',
+  notFound: '*',
+  specificCategory: '/category/:category',
+  specificCategoryElement: '/category/:category/:id',
 }

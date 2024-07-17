@@ -27,7 +27,7 @@ export function useLoadCategory(category: TCategoryName, page: number) {
         .then(({ info, results }) => {
           setHasMore(info.next !== null)
           setItems((prevState) => {
-            return [...prevState, ...results]
+            return [...new Set([...prevState, ...results])]
           })
         })
         .catch((e: Error) => setError(e.message))

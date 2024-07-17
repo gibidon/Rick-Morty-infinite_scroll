@@ -1,5 +1,4 @@
 import { Home } from './Home'
-
 import { Login } from './Login'
 import { PrivatePage } from './PrivatePage'
 import { NotFound } from './NotFound'
